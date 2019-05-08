@@ -1,0 +1,30 @@
+{
+  "name": "site",
+  "version": "1.0.0",
+  "description": "learning to use gulp",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pirocorp/Project.git"
+  },
+  "author": "Piro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pirocorp/Project/issues"
+  },
+  "homepage": "https://github.com/pirocorp/Project#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.26.5",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-shell": "^0.7.0",
+    "lodash": "^4.17.11"
+  }
+}
