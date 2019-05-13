@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Jekyll Theme - Lazy</title>
+    <title>{{ site.title }}</title>
     <link rel="stylesheet" href="/css/styles.css" type="text/css">
 </head>
 <body>
@@ -15,8 +15,8 @@
 
         <header class="site-header">
             <div class="site-branding">
-                <p class="site-title">Jekyll Theme - Lazy</p>
-                <p class="site-description">It's minimal and lazy!</p>
+                <p class="site-title">{{ site.title }}</p>
+                <p class="site-description">{{ site.description }}</p>
             </div>
 
             <!-- label will be used to change the state of menu -->
@@ -33,17 +33,7 @@
         <main class="site-content">
 
             <!-- Here will be put html from pages which use this layout -->
-            <h2>index.html</h2>
-<ul>
-    
-    <li>
-        <a href="/2019/05/10/First-Post-for-testing-the-theme.html">First Post for testing the theme</a>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum cursus enim velit, vel interdum nisi facilisis vitae. Suspendisse quis purus sed enim pellentesque consequat in at felis. Curabitur sagittis, diam et venenatis tincidunt, lacus felis tempus eros, placerat sodales tortor lectus at sem. Cras venenatis sit amet augue sed tincidunt. Curabitur varius ipsum non leo commodo, nec faucibus enim hendrerit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat mauris risus. Nam pellentesque sem erat, eget malesuada sapien vestibulum vel. Integer in sollicitudin lacus, eget iaculis ante. Maecenas ultricies, dui vel pulvinar volutpat, odio arcu consequat risus, dapibus gravida felis ex sagittis felis. Mauris non mauris felis.</p>
-
-
-    </li>
-    
-</ul>
+            {{ content }}
 
         </main>
         <footer class="site-footer">

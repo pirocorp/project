@@ -1,36 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jekyll Theme - Lazy</title>
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+</head>
+<body>
+    <div class="site">
 
-    <head>
-        <meta charset="utf-8">
-        <title>About</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/project/css/styles.css">
-    </head>
+        <!-- checkbox will be used to save the state of menu on/off -->
+        <input type="checkbox" id="nav-main-toggle" name="nav-main-toggle">
 
-    <body>
-        <nav>
-            <a href="/project/">Home</a>
-            <a href="/project/contacts/">Contacts</a>
-            <a href="/project/about/">About</a>
-        </nav>
-        <h1>About</h1>
-        <section>
-            <p>This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at <a href="https://jekyllrb.com/">jekyllrb.com</a></p>
+        <header class="site-header">
+            <div class="site-branding">
+                <p class="site-title">Jekyll Theme - Lazy</p>
+                <p class="site-description">It's minimal and lazy!</p>
+            </div>
 
-<p>You can find the source code for Minima at GitHub:
-<a href="https://github.com/jekyll">jekyll</a> /
-<a href="https://github.com/jekyll/minima">minima</a></p>
+            <!-- label will be used to change the state of menu -->
+            <label class="fas right" id="nav-toggle" for="nav-main-toggle"><span>Menu</span></label>
 
-<p>You can find the source code for Jekyll at GitHub:
-<a href="https://github.com/jekyll">jekyll</a> /
-<a href="https://github.com/jekyll/jekyll">jekyll</a></p>
+            <nav class="navigation main">                
+                <ul>
+                    <li><a class="fas fa-newspaper" href="/">Blog</a></li>
+                    <li><a class="fas fa-user-secret" href="/about">About</a></li>
+                    <li><a class="fas fa-envelope" href="/contacts">Contacts</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="site-content">
 
+            <!-- Here will be put html from pages which use this layout -->
+            <h2>about.html</h2>
 
-        </section>
-        <footer>
-            &copy; to me
+        </main>
+        <footer class="site-footer">
+
         </footer>
-    </body>    
-
+    </div>
+    
+</body>
 </html>

@@ -1,29 +1,40 @@
-"use strict";
+var gulp = require('gulp');
+var browserSync = require('browser-sync').create();
 
-let gulp = require("gulp"),
-    autoprefixer = require("gulp-autoprefixer"),
-    browserSync = require('browser-sync').create();
+var $ = require('gulp-load-plugins')();
 
-gulp.task("css", function () {
-    return gulp.src('_assets/css/**/*.css')
-        .pipe(autoprefixer())
-        .pipe(gulp.dest('docs/css/'))
-        .pipe(browserSync.stream({ match: '**/*.css' }))
-        ;
+var path = {
+    SCSS_SRC    : './scss/**/*.scss',
+    SCSS_DST    : './css',
+    HTML_SRC    : ['./css/*.css', './*.html', './_posts/*.*', './_layouts/*.*', './_includes/*.*'],
+}
+
+gulp.task('scss', function() {
+    gulp.src(path.SCSS_SRC)
+        .pipe($.sass())
+        .pipe($.autoprefixer({browsers: ['last 2 versions'], cascade: false}))
+        .pipe($.size({ showFiles: true }))
+        .pipe($.csso())
+        .pipe($.size({ showFiles: true }))
+        .pipe($.sourcemaps.write('map'))
+        .pipe(gulp.dest( path.SCSS_DST ))
+        .pipe(browserSync.stream({ match: '**/*.css' }));
 });
 
-gulp.task("watch", function () {
+gulp.task('jekyll', function() {
+    require('child_process').exec('bundle exec jekyll build --baseurl=', {stdio: 'inherit'});
+});
 
+gulp.task('serve', function() {
     browserSync.init({
         server: {
             baseDir: "./docs/"
         }
     });
 
-    gulp.watch('_assets/css/**/*.css', gulp.series('css'));
-
-    gulp.watch('docs/**/*.html').on('change', browserSync.reload);
-    gulp.watch('docs/**/*.js').on('change', browserSync.reload);
+    gulp.watch(path.SCSS_SRC, ['scss']);
+    gulp.watch(path.HTML_SRC, ['jekyll']);
+    gulp.watch(path.HTML_SRC).on('change', browserSync.reload);
 });
 
-gulp.task("default", gulp.series("watch"));
+gulp.task('default', ['jekyll', 'serve']);
