@@ -9,7 +9,7 @@ var path = {
     HTML_SRC    : ['./css/*.css', './*.html', './_posts/*.*', './_layouts/*.*', './_includes/*.*'],
 }
 
-gulp.task('scss', function() {
+gulp.task('scss', function(done) {
     gulp.src(path.SCSS_SRC)
         .pipe($.sass())
         .pipe($.autoprefixer({browsers: ['last 2 versions'], cascade: false}))
@@ -19,10 +19,13 @@ gulp.task('scss', function() {
         .pipe($.sourcemaps.write('map'))
         .pipe(gulp.dest( path.SCSS_DST ))
         .pipe(browserSync.stream({ match: '**/*.css' }));
+
+    done();
 });
 
-gulp.task('jekyll', function() {
+gulp.task('jekyll', function(done) {
     require('child_process').exec('bundle exec jekyll build --baseurl=', {stdio: 'inherit'});
+    done();
 });
 
 gulp.task('serve', function() {
@@ -32,9 +35,9 @@ gulp.task('serve', function() {
         }
     });
 
-    gulp.watch(path.SCSS_SRC, ['scss']);
-    gulp.watch(path.HTML_SRC, ['jekyll']);
+    gulp.watch(path.SCSS_SRC, gulp.series('scss', 'jekyll'));
+    gulp.watch(path.HTML_SRC, gulp.series('jekyll'));
     gulp.watch(path.HTML_SRC).on('change', browserSync.reload);
 });
 
-gulp.task('default', ['jekyll', 'serve']);
+gulp.task('default', gulp.series('scss', 'jekyll', 'serve'));
