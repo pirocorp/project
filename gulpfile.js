@@ -6,6 +6,7 @@ var $ = require('gulp-load-plugins')();
 var path = {
     SCSS_SRC    : './scss/**/*.scss',
     SCSS_DST    : './css',
+    CSS_JKDST   : './docs/css',
     HTML_SRC    : ['./css/*.css', './*.html', './_posts/*.*', './_layouts/*.*', './_includes/*.*'],
 }
 
@@ -18,6 +19,7 @@ gulp.task('scss', function(done) {
         .pipe($.size({ showFiles: true }))
         .pipe($.sourcemaps.write('map'))
         .pipe(gulp.dest( path.SCSS_DST ))
+        .pipe(gulp.dest( path.CSS_JKDST ))
         .pipe(browserSync.stream({ match: '**/*.css' }));
 
     done();

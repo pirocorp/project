@@ -7,7 +7,7 @@
     <title>{{ site.title }}</title>
     <link rel="stylesheet" href="{{site.baseurl}}/css/styles.css" type="text/css">
 </head>
-<body>
+<body class="{% if page.type %}{{ page.type }}{% else %}{% if page.title %}{{ page.title | slugify }}{% else %}home{% endif %}{% endif %}">
     <div class="site">
 
         <!-- checkbox will be used to save the state of menu on/off -->
@@ -27,6 +27,7 @@
                     <li><a class="fas fa-newspaper" href="{{site.baseurl}}/">Blog</a></li>
                     <li><a class="fas fa-user-secret" href="{{site.baseurl}}/about">About</a></li>
                     <li><a class="fas fa-envelope" href="{{site.baseurl}}/contacts">Contacts</a></li>
+                    <li><a class="fas fa-key" href="{{site.baseurl}}/login">Login</a></li>
                 </ul>
             </nav>
         </header>

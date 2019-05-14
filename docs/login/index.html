@@ -7,7 +7,7 @@
     <title>Jekyll Theme - Lazy</title>
     <link rel="stylesheet" href="/css/styles.css" type="text/css">
 </head>
-<body class="about">
+<body class="login">
     <div class="site">
 
         <!-- checkbox will be used to save the state of menu on/off -->
@@ -34,7 +34,23 @@
         <main class="site-content">
 
             <!-- Here will be put html from pages which use this layout -->
-            <h2>about.html</h2>
+            <form action="#" method="POST">
+    <fieldset>
+        <legend>Login</legend>
+
+        <p class="field">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username">
+        </p>
+
+        <p class="field">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+        </p>
+
+        <input type="submit" class="button" value="Login">
+    </fieldset>
+</form>
 
         </main>
         <footer class="site-footer">

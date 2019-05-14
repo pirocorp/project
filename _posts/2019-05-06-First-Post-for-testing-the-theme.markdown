@@ -1,5 +1,6 @@
 ---
 layout: site
+type:   post
 title:  "First Post for testing the theme"
 date:   2019-05-10 11:08:40 +0200
 ---
