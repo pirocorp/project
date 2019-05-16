@@ -1,0 +1,30 @@
+$breakpoints : (
+    "phone": 400px,
+    "phone-wide": 480px,
+    "phablet": 560px,
+    "tablet-small": 640px,
+    "tablet": 768px,
+    "tablet-wide": 1024px,
+    "desktop": 1248px,
+    "desktop-wide": 1440px
+);
+
+//function which generates media query based on input parameters
+@mixin mq($width, $type: min) {
+    @if map-has-key($breakpoints, $width) {
+        $width: map-get($breakpoints, $width);
+        @if $type == max {
+            $width: $width - 1px;
+        }
+
+        //My tests show that it will work without this part too
+        //$parent: &;
+
+        @media screen and (#{$type}-width: $width) {
+            //My tests show that it will work without this part too only @content must be present
+            //@at-root #{$parent} {
+                @content;
+            //}
+        }
+    }
+}
